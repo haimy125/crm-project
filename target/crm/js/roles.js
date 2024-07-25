@@ -2,7 +2,6 @@ $(document).ready(function () {
 
     $("#btn-update-role").prop("disabled", true);
 
-
     function tableRoles() {
         $.ajax({
             method: "GET",
@@ -134,7 +133,22 @@ $(document).ready(function () {
     $('#btn-reset-form').click(function (e) {
         e.preventDefault();
         $('#myForm')[0].reset();
-    })
+    });
+
+    $('#myForm').validate({
+        onfocusout: false,
+        onkeyup: false,
+        onclick: false,
+        rules: {
+            "name": {
+                required: true,
+                maxLength: 20
+            },
+            "description": {
+                maxLength: 100
+            }
+        }
+    });
 
     tableRoles();
 });
